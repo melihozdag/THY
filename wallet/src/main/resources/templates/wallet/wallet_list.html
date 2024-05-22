@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wallet List</title>
+  </head>
+  <body>
+    <h1>Wallet List</h1>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Currency</th>
+        <th>Balance</th>
+        <th>Owner</th>
+        <th>Action</th>
+      </tr>
+      <tr th:each="wallet : ${wallets}">
+        <td th:text="${wallet.id}"></td>
+        <td th:text="${wallet.currency}"></td>
+        <td th:text="${wallet.balance}"></td>
+        <td th:text="${wallet.owner.username}"></td>
+        <td>
+          <a th:href="@{/wallet/edit/{id}(id=${wallet.id})}">Edit</a>
+          <a th:href="@{/wallet/delete/{id}(id=${wallet.id})}">Delete</a>
+          <a th:href="@{/wallet/withdraw/{id}(id=${wallet.id})}">Withdraw</a>
+        </td>
+      </tr>
+    </table>
+    <a href="/">Go back</a>
+  </body>
+</html>
